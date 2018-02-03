@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MachineDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BuyerInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BuyerName" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="FinishInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FinishName" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="LoadMachine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MC" Type="int" />
+          <Property Name="Serial" Type="int" />
+          <Property Name="Buyer" Type="int" />
+          <Property Name="Order" Type="varchar" MaxLength="25" />
+          <Property Name="Colour" Type="varchar" MaxLength="25" />
+          <Property Name="ColourAvater" Type="varchar(max)" />
+          <Property Name="Fabric" Type="varchar" MaxLength="50" />
+          <Property Name="FinishType" Type="int" />
+          <Property Name="Matching" Type="varchar" MaxLength="25" />
+          <Property Name="BatchType" Type="varchar" MaxLength="50" />
+          <Property Name="RemarksAndPrecautions" Type="int" />
+          <Property Name="FabricStock" Type="bit" />
+          <Property Name="ColourStock" Type="bit" />
+          <Property Name="PlanConfirm" Type="bit" />
+          <Property Name="TOQ" Type="varchar(max)" />
+          <Property Name="OrderCode" Type="int" />
+          <Property Name="ColourSequence" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="OrderCodeInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderCodeName" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="RemarksInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RemarksName" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_LoadMachine_ToTable">
+          <End Role="BuyerInfo" Type="Self.BuyerInfo" Multiplicity="0..1" />
+          <End Role="LoadMachine" Type="Self.LoadMachine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BuyerInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LoadMachine">
+              <PropertyRef Name="Buyer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoadMachine_ToTable_1">
+          <End Role="FinishInfo" Type="Self.FinishInfo" Multiplicity="0..1" />
+          <End Role="LoadMachine" Type="Self.LoadMachine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinishInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LoadMachine">
+              <PropertyRef Name="FinishType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoadMachine_ToTable_2">
+          <End Role="RemarksInfo" Type="Self.RemarksInfo" Multiplicity="0..1" />
+          <End Role="LoadMachine" Type="Self.LoadMachine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RemarksInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LoadMachine">
+              <PropertyRef Name="RemarksAndPrecautions" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoadMachine_ToTable_3">
+          <End Role="OrderCodeInfo" Type="Self.OrderCodeInfo" Multiplicity="0..1" />
+          <End Role="LoadMachine" Type="Self.LoadMachine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderCodeInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LoadMachine">
+              <PropertyRef Name="OrderCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MachineDBModelStoreContainer">
+          <EntitySet Name="BuyerInfo" EntityType="Self.BuyerInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FinishInfo" EntityType="Self.FinishInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoadMachine" EntityType="Self.LoadMachine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderCodeInfo" EntityType="Self.OrderCodeInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RemarksInfo" EntityType="Self.RemarksInfo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_LoadMachine_ToTable" Association="Self.FK_LoadMachine_ToTable">
+            <End Role="BuyerInfo" EntitySet="BuyerInfo" />
+            <End Role="LoadMachine" EntitySet="LoadMachine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoadMachine_ToTable_1" Association="Self.FK_LoadMachine_ToTable_1">
+            <End Role="FinishInfo" EntitySet="FinishInfo" />
+            <End Role="LoadMachine" EntitySet="LoadMachine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoadMachine_ToTable_2" Association="Self.FK_LoadMachine_ToTable_2">
+            <End Role="RemarksInfo" EntitySet="RemarksInfo" />
+            <End Role="LoadMachine" EntitySet="LoadMachine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoadMachine_ToTable_3" Association="Self.FK_LoadMachine_ToTable_3">
+            <End Role="OrderCodeInfo" EntitySet="OrderCodeInfo" />
+            <End Role="LoadMachine" EntitySet="LoadMachine" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MachineDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BuyerInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuyerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LoadMachines" Relationship="Self.FK_LoadMachine_ToTable" FromRole="BuyerInfo" ToRole="LoadMachine" />
+        </EntityType>
+        <EntityType Name="FinishInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FinishName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LoadMachines" Relationship="Self.FK_LoadMachine_ToTable_1" FromRole="FinishInfo" ToRole="LoadMachine" />
+        </EntityType>
+        <EntityType Name="LoadMachine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MC" Type="Int32" />
+          <Property Name="Serial" Type="Int32" />
+          <Property Name="Buyer" Type="Int32" />
+          <Property Name="Order" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Colour" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ColourAvater" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Fabric" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FinishType" Type="Int32" />
+          <Property Name="Matching" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="BatchType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RemarksAndPrecautions" Type="Int32" />
+          <Property Name="FabricStock" Type="Boolean" />
+          <Property Name="ColourStock" Type="Boolean" />
+          <Property Name="PlanConfirm" Type="Boolean" />
+          <Property Name="TOQ" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OrderCode" Type="Int32" />
+          <Property Name="ColourSequence" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BuyerInfo" Relationship="Self.FK_LoadMachine_ToTable" FromRole="LoadMachine" ToRole="BuyerInfo" />
+          <NavigationProperty Name="FinishInfo" Relationship="Self.FK_LoadMachine_ToTable_1" FromRole="LoadMachine" ToRole="FinishInfo" />
+          <NavigationProperty Name="RemarksInfo" Relationship="Self.FK_LoadMachine_ToTable_2" FromRole="LoadMachine" ToRole="RemarksInfo" />
+          <NavigationProperty Name="OrderCodeInfo" Relationship="Self.FK_LoadMachine_ToTable_3" FromRole="LoadMachine" ToRole="OrderCodeInfo" />
+        </EntityType>
+        <EntityType Name="OrderCodeInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderCodeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LoadMachines" Relationship="Self.FK_LoadMachine_ToTable_3" FromRole="OrderCodeInfo" ToRole="LoadMachine" />
+        </EntityType>
+        <EntityType Name="RemarksInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RemarksName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LoadMachines" Relationship="Self.FK_LoadMachine_ToTable_2" FromRole="RemarksInfo" ToRole="LoadMachine" />
+        </EntityType>
+        <Association Name="FK_LoadMachine_ToTable">
+          <End Role="BuyerInfo" Type="Self.BuyerInfo" Multiplicity="0..1" />
+          <End Role="LoadMachine" Type="Self.LoadMachine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BuyerInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LoadMachine">
+              <PropertyRef Name="Buyer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoadMachine_ToTable_1">
+          <End Role="FinishInfo" Type="Self.FinishInfo" Multiplicity="0..1" />
+          <End Role="LoadMachine" Type="Self.LoadMachine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinishInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LoadMachine">
+              <PropertyRef Name="FinishType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoadMachine_ToTable_2">
+          <End Role="RemarksInfo" Type="Self.RemarksInfo" Multiplicity="0..1" />
+          <End Role="LoadMachine" Type="Self.LoadMachine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RemarksInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LoadMachine">
+              <PropertyRef Name="RemarksAndPrecautions" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoadMachine_ToTable_3">
+          <End Role="OrderCodeInfo" Type="Self.OrderCodeInfo" Multiplicity="0..1" />
+          <End Role="LoadMachine" Type="Self.LoadMachine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderCodeInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LoadMachine">
+              <PropertyRef Name="OrderCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MachineDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BuyerInfoes" EntityType="Self.BuyerInfo" />
+          <EntitySet Name="FinishInfoes" EntityType="Self.FinishInfo" />
+          <EntitySet Name="LoadMachines" EntityType="Self.LoadMachine" />
+          <EntitySet Name="OrderCodeInfoes" EntityType="Self.OrderCodeInfo" />
+          <EntitySet Name="RemarksInfoes" EntityType="Self.RemarksInfo" />
+          <AssociationSet Name="FK_LoadMachine_ToTable" Association="Self.FK_LoadMachine_ToTable">
+            <End Role="BuyerInfo" EntitySet="BuyerInfoes" />
+            <End Role="LoadMachine" EntitySet="LoadMachines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoadMachine_ToTable_1" Association="Self.FK_LoadMachine_ToTable_1">
+            <End Role="FinishInfo" EntitySet="FinishInfoes" />
+            <End Role="LoadMachine" EntitySet="LoadMachines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoadMachine_ToTable_2" Association="Self.FK_LoadMachine_ToTable_2">
+            <End Role="RemarksInfo" EntitySet="RemarksInfoes" />
+            <End Role="LoadMachine" EntitySet="LoadMachines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoadMachine_ToTable_3" Association="Self.FK_LoadMachine_ToTable_3">
+            <End Role="OrderCodeInfo" EntitySet="OrderCodeInfoes" />
+            <End Role="LoadMachine" EntitySet="LoadMachines" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MachineDBModelStoreContainer" CdmEntityContainer="MachineDBEntities">
+          <EntitySetMapping Name="BuyerInfoes">
+            <EntityTypeMapping TypeName="MachineDBModel.BuyerInfo">
+              <MappingFragment StoreEntitySet="BuyerInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BuyerName" ColumnName="BuyerName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FinishInfoes">
+            <EntityTypeMapping TypeName="MachineDBModel.FinishInfo">
+              <MappingFragment StoreEntitySet="FinishInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FinishName" ColumnName="FinishName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoadMachines">
+            <EntityTypeMapping TypeName="MachineDBModel.LoadMachine">
+              <MappingFragment StoreEntitySet="LoadMachine">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MC" ColumnName="MC" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="Buyer" ColumnName="Buyer" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="Colour" ColumnName="Colour" />
+                <ScalarProperty Name="ColourAvater" ColumnName="ColourAvater" />
+                <ScalarProperty Name="Fabric" ColumnName="Fabric" />
+                <ScalarProperty Name="FinishType" ColumnName="FinishType" />
+                <ScalarProperty Name="Matching" ColumnName="Matching" />
+                <ScalarProperty Name="BatchType" ColumnName="BatchType" />
+                <ScalarProperty Name="RemarksAndPrecautions" ColumnName="RemarksAndPrecautions" />
+                <ScalarProperty Name="FabricStock" ColumnName="FabricStock" />
+                <ScalarProperty Name="ColourStock" ColumnName="ColourStock" />
+                <ScalarProperty Name="PlanConfirm" ColumnName="PlanConfirm" />
+                <ScalarProperty Name="TOQ" ColumnName="TOQ" />
+                <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+                <ScalarProperty Name="ColourSequence" ColumnName="ColourSequence" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderCodeInfoes">
+            <EntityTypeMapping TypeName="MachineDBModel.OrderCodeInfo">
+              <MappingFragment StoreEntitySet="OrderCodeInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrderCodeName" ColumnName="OrderCodeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RemarksInfoes">
+            <EntityTypeMapping TypeName="MachineDBModel.RemarksInfo">
+              <MappingFragment StoreEntitySet="RemarksInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RemarksName" ColumnName="RemarksName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

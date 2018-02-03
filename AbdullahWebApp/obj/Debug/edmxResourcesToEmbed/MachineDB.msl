@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MachineDBModelStoreContainer" CdmEntityContainer="MachineDBEntities">
+    <EntitySetMapping Name="BuyerInfoes">
+      <EntityTypeMapping TypeName="MachineDBModel.BuyerInfo">
+        <MappingFragment StoreEntitySet="BuyerInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BuyerName" ColumnName="BuyerName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FinishInfoes">
+      <EntityTypeMapping TypeName="MachineDBModel.FinishInfo">
+        <MappingFragment StoreEntitySet="FinishInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FinishName" ColumnName="FinishName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoadMachines">
+      <EntityTypeMapping TypeName="MachineDBModel.LoadMachine">
+        <MappingFragment StoreEntitySet="LoadMachine">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MC" ColumnName="MC" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="Buyer" ColumnName="Buyer" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+          <ScalarProperty Name="Colour" ColumnName="Colour" />
+          <ScalarProperty Name="ColourAvater" ColumnName="ColourAvater" />
+          <ScalarProperty Name="Fabric" ColumnName="Fabric" />
+          <ScalarProperty Name="FinishType" ColumnName="FinishType" />
+          <ScalarProperty Name="Matching" ColumnName="Matching" />
+          <ScalarProperty Name="BatchType" ColumnName="BatchType" />
+          <ScalarProperty Name="RemarksAndPrecautions" ColumnName="RemarksAndPrecautions" />
+          <ScalarProperty Name="FabricStock" ColumnName="FabricStock" />
+          <ScalarProperty Name="ColourStock" ColumnName="ColourStock" />
+          <ScalarProperty Name="PlanConfirm" ColumnName="PlanConfirm" />
+          <ScalarProperty Name="TOQ" ColumnName="TOQ" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="ColourSequence" ColumnName="ColourSequence" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderCodeInfoes">
+      <EntityTypeMapping TypeName="MachineDBModel.OrderCodeInfo">
+        <MappingFragment StoreEntitySet="OrderCodeInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OrderCodeName" ColumnName="OrderCodeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RemarksInfoes">
+      <EntityTypeMapping TypeName="MachineDBModel.RemarksInfo">
+        <MappingFragment StoreEntitySet="RemarksInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RemarksName" ColumnName="RemarksName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

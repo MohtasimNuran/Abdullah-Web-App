@@ -1,0 +1,189 @@
+﻿@model AbdullahWebApp.LoadMachine
+
+@{
+    ViewBag.Title = "Load";
+}
+
+<h2>Load</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Load Machine</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="row" style="background-color: #d3d3d3; color: #008080; padding-top: 20px; -webkit-border-radius: 5px">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MC, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.MC, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MC)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Serial, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Serial, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Serial)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Buyer, "Buyer", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("Buyer", null, "...Select...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Buyer)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Order, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Order, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Order)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Colour, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Colour, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Colour)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ColourAvater, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.ColourAvater, new { @class = "form-control" })
+                        <input type="color" class="form-control"/>
+                        @Html.ValidationMessageFor(model => model.ColourAvater)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Fabric, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Fabric, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Fabric)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FinishType, "FinishType", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("FinishType", null, "...Select...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.FinishType)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Matching, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Matching, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Matching)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BatchType, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.BatchType, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.BatchType)
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.RemarksAndPrecautions, "Remarks & Precautions", new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownList("RemarksAndPrecautions", null, "...Select...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.RemarksAndPrecautions)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FabricStock, new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.FabricStock, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.FabricStock)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ColourStock, new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.ColourStock, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ColourStock)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PlanConfirm, new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.PlanConfirm, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.PlanConfirm)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TOQ, new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.TOQ, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TOQ)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.OrderCode, "OrderCode", new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownList("OrderCode", null, "...Select...", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.OrderCode)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ColourSequence, new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.ColourSequence, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ColourSequence)
+                    </div>
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br/>
+                <br />
+                <br />
+                <div class="form-group">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-8">
+                        <input type="submit" value="Load" class="btn btn-success"/>
+                        <input type="button" value="Load and add another" class="btn btn-primary"/>
+                        <input type="button" value="Clear" class="btn btn-danger"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+}
+
+@*<div>*@
+@*    @Html.ActionLink("Back to List", "Index")*@
+@*</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
